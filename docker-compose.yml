@@ -1,0 +1,13 @@
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: product-service-redis
+    ports:
+      - "6381:6379"
+    volumes:
+      - product_redis_data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+
+volumes:
+  product_redis_data:
